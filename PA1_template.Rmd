@@ -65,6 +65,8 @@ max(temp2[,2])
 
 #####4. Imputing missing values
 
+The strategy for filling out the missing values will be filling them with the previously calculated means for the respective intervals.
+
 ```{r missval, echo=TRUE}
 number.nas <- sum(is.na(act$steps))
 act.nas.filled <- act

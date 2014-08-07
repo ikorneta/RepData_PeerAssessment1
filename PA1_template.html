@@ -253,6 +253,8 @@ p2
 
 <p>#####4. Imputing missing values</p>
 
+<p>The strategy for filling out the missing values will be filling them with the previously calculated means for the respective intervals.</p>
+
 <pre><code class="r">number.nas &lt;- sum(is.na(act$steps))
 act.nas.filled &lt;- act
 for (i in 1:nrow(act)){

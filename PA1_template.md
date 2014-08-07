@@ -76,6 +76,8 @@ The corresponding number of steps is
 
 #####4. Imputing missing values
 
+The strategy for filling out the missing values will be filling them with the previously calculated means for the respective intervals.
+
 
 ```r
 number.nas <- sum(is.na(act$steps))
