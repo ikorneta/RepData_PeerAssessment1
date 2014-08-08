@@ -3,7 +3,7 @@ author: "Iga Korneta"
 
 date: "Thursday, August 07, 2014"
 
-#####1. Loading and preprocessing the data
+##### 1. Loading and preprocessing the data
 
 
 ```r
@@ -11,7 +11,7 @@ act <- read.csv("./activity.csv")
 act$interval <- as.factor(act$interval)
 ```
 
-#####2. What is mean total number of steps taken per day?
+##### 2. What is mean total number of steps taken per day?
 
 
 ```r
@@ -27,21 +27,10 @@ p1
 
 ![plot of chunk meanstep](figure/meanstep.png) 
 
-The mean total number of steps taken per day is 
-
-```
-## [1] 10766
-```
+The mean total number of steps taken per day is 10766.2. The median total number of steps taken per day is 10765.
 
 
-The median total number of steps taken per day is 
-
-```
-## [1] 10765
-```
-
-
-#####3. What is the average daily activity pattern?
+##### 3. What is the average daily activity pattern?
 
 
 ```r
@@ -60,21 +49,10 @@ p2
 
 ![plot of chunk daily](figure/daily.png) 
 
-The interval with the maximum number of steps taken is 
-
-```
-## [1] 835
-## 288 Levels: 0 5 10 15 20 25 30 35 40 45 50 55 100 105 110 115 120 ... 2355
-```
-
-The corresponding number of steps is
-
-```
-## [1] 206.2
-```
+The interval with the maximum number of steps taken is 835. The corresponding number of steps is 206.1698.
 
 
-#####4. Imputing missing values
+##### 4. Imputing missing values
 
 The strategy for filling out the missing values will be filling them with the previously calculated means for the respective intervals.
 
@@ -98,22 +76,10 @@ p3
 
 ![plot of chunk missval](figure/missval.png) 
 
-The new mean total number of steps taken per day is 
-
-```
-## [1] 10766
-```
+The new mean total number of steps taken per day is 10766.2. The new median total number of steps taken per day is 10766.2. As you can see, the mean hasn't changed (because this is what I used to input the missing values), but the median is larger!
 
 
-The new median total number of steps taken per day is 
-
-```
-## [1] 10766
-```
-
-It's larger by 1, as you can see!
-
-#####5. Are there differences in activity patterns between weekdays and weekends?
+##### 5. Are there differences in activity patterns between weekdays and weekends?
 
 ```r
 act.nas.filled$date <- as.Date(act.nas.filled$date, format="%Y-%m-%d")

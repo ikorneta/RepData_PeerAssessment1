@@ -3,14 +3,14 @@ author: "Iga Korneta"
 
 date: "Thursday, August 07, 2014"
 
-#####1. Loading and preprocessing the data
+##### 1. Loading and preprocessing the data
 
 ```{r loadchunk , echo=TRUE}
 act <- read.csv("./activity.csv")
 act$interval <- as.factor(act$interval)
 ```
 
-#####2. What is mean total number of steps taken per day?
+##### 2. What is mean total number of steps taken per day?
 
 ```{r meanstep, echo=TRUE}
 library(ggplot2)
@@ -24,19 +24,10 @@ p1
 
 ```
 
-The mean total number of steps taken per day is 
-```{r , echo=FALSE }
-step.mean
-```
+The mean total number of steps taken per day is `r sprintf("%3.1f", step.mean)`. The median total number of steps taken per day is `r step.median`.
 
 
-The median total number of steps taken per day is 
-```{r , echo=FALSE}
-step.median
-```
-
-
-#####3. What is the average daily activity pattern?
+##### 3. What is the average daily activity pattern?
 
 ```{r daily, echo=TRUE}
 library(plyr)
@@ -52,18 +43,10 @@ temp2.max <- temp2[which(temp2[,2]==max(temp2[,2])),1]
 p2
 ```
 
-The interval with the maximum number of steps taken is 
-```{r , echo=FALSE}
-temp2.max
-```
-
-The corresponding number of steps is
-```{r , echo=FALSE}
-max(temp2[,2])
-```
+The interval with the maximum number of steps taken is `r temp2.max`. The corresponding number of steps is `r max(temp2[,2])`.
 
 
-#####4. Imputing missing values
+##### 4. Imputing missing values
 
 The strategy for filling out the missing values will be filling them with the previously calculated means for the respective intervals.
 
@@ -84,20 +67,10 @@ step.new.median <- median(temp[,1], na.rm=TRUE)
 p3                  
 ```
 
-The new mean total number of steps taken per day is 
-```{r , echo=FALSE }
-step.new.mean
-```
+The new mean total number of steps taken per day is `r sprintf("%3.1f", step.new.mean)`. The new median total number of steps taken per day is `r sprintf("%3.1f", step.new.median)`. As you can see, the mean hasn't changed (because this is what I used to input the missing values), but the median is larger!
 
 
-The new median total number of steps taken per day is 
-```{r , echo=FALSE}
-step.new.median
-```
-
-It's larger by 1, as you can see!
-
-#####5. Are there differences in activity patterns between weekdays and weekends?
+##### 5. Are there differences in activity patterns between weekdays and weekends?
 ```{r weekdays, echo=TRUE}
 act.nas.filled$date <- as.Date(act.nas.filled$date, format="%Y-%m-%d")
 act.nas.filled$weekday <- weekdays(act.nas.filled$date)
